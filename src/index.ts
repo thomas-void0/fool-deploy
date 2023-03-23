@@ -4,10 +4,13 @@ import cpypto from 'crypto';
 
 cpypto;
 
-let options: Record<string, string> = {
+let options: Record<string, any> = {
+  cache: true,
   port: '2333',
   buildCommand: 'pnpm build',
   installCommand: 'pnpm install',
+  nodeVersion: '18.14-alpine',
+  nginxVersion: '1.22.1',
 };
 
 // 处理配置
@@ -34,19 +37,53 @@ function collectOptions() {
   }
 }
 
-function generateDockerfile() {}
+function generateDockerfile(options: any) {
+  `
+  ARG NAME=node
+  ARG VERSION=${options.nodeVersion}
+  ARG PROXY=nginx
+  ARG PROXY_VERSION=1.22.1
+
+  FROM node:${options.nodeVersion} as deps
+  WORKDIR /workspace
+  RUN npm install -g pnpm
+  COPY pnpm-lock.yaml .npmrc ./
+  RUN pnpm fetch
+  COPY package.json ./
+  RUN pnpm install --frozen-lockfile --offline --ignore-scripts
+
+  FROM node:${options.nodeVersion} as builder
+  WORKDIR /workspace
+  RUN npm install -g pnpm
+  COPY --from=deps /workspace/node_modules ./node_modules
+  COPY . .
+  RUN pnpm build
+
+  FROM nginx:${options.nginxVersion} as runer
+  WORKDIR /
+  COPY --from=builder /workspace/dist/ /usr/share/nginx/html/
+  RUN rm /etc/nginx/conf.d/default.conf
+  COPY --from=builder /workspace/nginx.conf /etc/nginx/conf.d/
+  `;
+}
 
 function generateDeployShell() {}
 
 // exec run
 function run() {}
 
-// read .fool-tmp cache
+// read .fool-cache cache
 function readCache() {}
+
+// decide whether use cache
+function isUseCache() {
+  if (options.cache) {
+  }
+}
 
 function init() {
   collectOptions();
-  generateDockerfile();
+  generateDockerfile(options);
   generateDeployShell();
   run();
 }
