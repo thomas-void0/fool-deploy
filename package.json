@@ -1,5 +1,4 @@
 {
-  "version": "0.1.0",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -34,6 +33,7 @@
   "name": "docker-deploy-web-new",
   "author": "newrankyangjingyu",
   "module": "dist/docker-deploy-web-new.esm.js",
+  "version": "0.0.1",
   "size-limit": [
     {
       "path": "dist/docker-deploy-web-new.cjs.production.min.js",
