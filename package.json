@@ -46,10 +46,14 @@
   ],
   "devDependencies": {
     "@size-limit/preset-small-lib": "^8.2.4",
+    "@types/shelljs": "^0.8.11",
     "husky": "^8.0.3",
     "size-limit": "^8.2.4",
     "tsdx": "^0.14.1",
     "tslib": "^2.5.0",
     "typescript": "^5.0.2"
+  },
+  "dependencies": {
+    "shelljs": "^0.8.5"
   }
 }

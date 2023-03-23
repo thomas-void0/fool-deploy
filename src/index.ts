@@ -1,16 +1,15 @@
 // import path from 'path';
 import fs from 'fs';
-import cpypto from 'crypto';
+import run from './lib/run';
+import { Options } from './typings';
 
-cpypto;
-
-let options: Record<string, any> = {
+let options: Options = {
   cache: true,
-  port: '2333',
-  buildCommand: 'pnpm build',
-  installCommand: 'pnpm install',
+  port: 2333,
+  packageCommand: 'pnpm',
   nodeVersion: '18.14-alpine',
   nginxVersion: '1.22.1',
+  tagName: 'foolDeploy:prod',
 };
 
 // 处理配置
@@ -70,22 +69,21 @@ function generateDockerfile(options: any) {
 function generateDeployShell() {}
 
 // exec run
-function run() {}
 
 // read .fool-cache cache
-function readCache() {}
+// function readCache() {}
 
-// decide whether use cache
-function isUseCache() {
-  if (options.cache) {
-  }
-}
+// // decide whether use cache
+// function isUseCache() {
+//   if (options.cache) {
+//   }
+// }
 
 function init() {
   collectOptions();
   generateDockerfile(options);
   generateDeployShell();
-  run();
+  run(options);
 }
 
 init();
