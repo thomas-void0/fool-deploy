@@ -1,4 +1,5 @@
 import fs from 'fs';
+import shell from 'shelljs';
 import generateHash from './lib/generateHash';
 import generateOptions from './lib/generateOptions';
 import isInstallDocker from './lib/isInstallDocker';
@@ -8,11 +9,20 @@ import run from './lib/run';
 import { Options } from './typings';
 
 function create(options: Options, hash?: string) {
-  fs.mkdirSync(config.cacheDir);
-  fs.writeFileSync(hashFilePath, hash);
+  const dirPath = options.cache ? config.cacheDir : config.tempDir;
+  // del old dir
+  shell.rm(`-rf ${dirPath}`);
+
+  // create dir
+  fs.mkdirSync(dirPath);
+
+  options.cache && fs.writeFileSync(`${dirPath}/.hash`, hash!);
 
   const dockerfileConent = generateDockerfileContent(options);
-  fs.writeFileSync(`${config.cacheDir}/Dockerfile`, dockerfileConent);
+  fs.writeFileSync(`${dirPath}/Dockerfile`, dockerfileConent);
+
+  // run shell
+  run(options, `${dirPath}/Dockerfile`);
 }
 
 function init() {
@@ -41,7 +51,9 @@ function init() {
     ? fs.readFileSync(hashFilePath).toString('utf-8')
     : '';
   // whether update options
-  curHash === prevHash ? run(options) : create(options, curHash);
+  curHash === prevHash
+    ? run(options, `${config.cacheDir}/Dockerfile`)
+    : create(options, curHash);
 }
 
 init();

@@ -23,19 +23,17 @@ function logError(msg: string) {
 //   shell.exec('yum install docker-ce docker-ce-cli containerd.io');
 // }
 
-function run(options: Pick<Options, 'tagName' | 'port' | 'cache'>) {
+function run(options: Pick<Options, 'tagName' | 'port'>, filePath: string) {
   // if don't install docker
   // !isInstallDocker() && installDocker();
 
   // exec docker shell
-  const { tagName, port, cache } = options;
+  const { tagName, port } = options;
 
   const rmImages = shell.exec(`docker rmi -f ${tagName}`);
   if (rmImages.code !== 0) {
     return logError(`docker delete image ${tagName} failed.`);
   }
-
-  const filePath = cache ? '.fool-cache/Dockerfile' : '.fool-temp/Dockerfile';
 
   const buildImages = shell.exec(
     `docker build --pull -t ${tagName} -f ${filePath} .`
@@ -56,6 +54,8 @@ function run(options: Pick<Options, 'tagName' | 'port' | 'cache'>) {
   if (runContainer.code !== 0) {
     return logError(`docker run container ${name} failed.`);
   }
+
+  console.log(`happy landing. deploy successful.`);
 }
 
 export default run;

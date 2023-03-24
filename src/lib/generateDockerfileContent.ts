@@ -76,15 +76,4 @@ COPY --from=builder /workspace/nginx.conf /etc/nginx/conf.d/
   return str;
 }
 
-function generateDockerfile(
-  options: Parameters<typeof generateDockerfileContent>[0] &
-    Pick<Options, 'cache'>
-) {
-  const content = generateDockerfileContent(options);
-  const dockerfilePath = options.cache
-    ? '.fool-cache/Dockerfile'
-    : '.fool-temp/Dockerfile';
-  fs.writeFileSync(dockerfilePath, content);
-}
-
 export default generateDockerfileContent;
