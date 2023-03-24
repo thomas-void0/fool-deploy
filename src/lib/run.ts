@@ -23,33 +23,33 @@ function logError(msg: string) {
 //   shell.exec('yum install docker-ce docker-ce-cli containerd.io');
 // }
 
-function run(options: Pick<Options, 'tagName' | 'port'>, filePath: string) {
+function run(options: Pick<Options, 'imageName' | 'port'>, filePath: string) {
   // if don't install docker
   // !isInstallDocker() && installDocker();
 
   // exec docker shell
-  const { tagName, port } = options;
+  const { imageName, port } = options;
 
-  const rmImages = shell.exec(`docker rmi -f ${tagName}`);
+  const rmImages = shell.exec(`docker rmi -f ${imageName}`);
   if (rmImages.code !== 0) {
-    return logError(`docker delete image ${tagName} failed.`);
+    return logError(`docker delete image ${imageName} failed.`);
   }
 
   const buildImages = shell.exec(
-    `docker build --pull -t ${tagName} -f ${filePath} .`
+    `docker build --pull -t ${imageName} -f ${filePath} .`
   );
   if (buildImages.code !== 0) {
-    return logError(`docker build image ${tagName} failed.`);
+    return logError(`docker build image ${imageName} failed.`);
   }
 
-  const [name] = tagName.split(':');
+  const [name] = imageName.split(':');
   const rmContainer = shell.exec(`docker rm -f ${name}`);
   if (rmContainer.code !== 0) {
     return logError(`docker delete container ${name} failed.`);
   }
 
   const runContainer = shell.exec(
-    `docker run --name ${name} --restart=always -d -p ${port}:80 ${tagName}`
+    `docker run --name ${name} --restart=always -d -p ${port}:80 ${imageName}`
   );
   if (runContainer.code !== 0) {
     return logError(`docker run container ${name} failed.`);

@@ -4,5 +4,5 @@ export interface Options {
   packageCommand: 'npm' | 'yarn' | 'pnpm';
   nodeVersion: string;
   nginxVersion: string;
-  tagName: string;
+  imageName: string;
 }

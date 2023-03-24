@@ -7,7 +7,7 @@ let options: Options = {
   packageCommand: 'pnpm',
   nodeVersion: '18.14-alpine',
   nginxVersion: '1.22.1',
-  tagName: 'fool-deploy:prod',
+  imageName: 'fool-deploy:prod',
 };
 
 function generateOptions() {
@@ -17,7 +17,7 @@ function generateOptions() {
   if (fs.existsSync(pkgPath)) {
     const str = fs.readFileSync(pkgPath).toString('utf-8');
     const { name = 'foolDeploy', version = 'prod' } = JSON.parse(str);
-    options.tagName = `${name}:${version}`;
+    options.imageName = `${name}:${version}`;
   } else {
     throw new Error(
       `Error: ${cwdPath} not found package.json，shell must running in projcet root dir.`
