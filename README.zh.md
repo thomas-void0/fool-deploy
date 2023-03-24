@@ -1,5 +1,7 @@
 # fool-deploy
 
+[English](./README.zh.md)
+
 在 linux 服务器中快速部署你的 web 项目。你或许不知道`docker`,`nginx`.别担心，你只需要像是运行`npm run deploy`命令一样，它会帮你完成剩下的一切。
 
 # 前置条件
