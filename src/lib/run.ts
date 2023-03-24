@@ -7,36 +7,38 @@ function logError(msg: string) {
 }
 
 // check docker install
-function isInstallDocker() {
-  return shell.exec('docker version').code === 0;
-}
+// function isInstallDocker() {
+//   return shell.exec('docker version').code === 0;
+// }
 
 // install docker
-function installDocker() {
-  shell.exec('yum install -y yum-utils');
-  shell.exec(`
-    yum-config-manager \
-    --add-repo \
-    https://download.docker.com/linux/centos/docker-ce.repo
-  `);
-  shell.exec('yum makecache fast');
-  shell.exec('yum install docker-ce docker-ce-cli containerd.io');
-}
+// function installDocker() {
+//   shell.exec('yum install -y yum-utils');
+//   shell.exec(`
+//     yum-config-manager \
+//     --add-repo \
+//     https://download.docker.com/linux/centos/docker-ce.repo
+//   `);
+//   shell.exec('yum makecache fast');
+//   shell.exec('yum install docker-ce docker-ce-cli containerd.io');
+// }
 
-function run(options: Pick<Options, 'tagName' | 'port'>) {
+function run(options: Pick<Options, 'tagName' | 'port' | 'cache'>) {
   // if don't install docker
-  !isInstallDocker() && installDocker();
+  // !isInstallDocker() && installDocker();
 
   // exec docker shell
-  const { tagName, port } = options;
+  const { tagName, port, cache } = options;
 
   const rmImages = shell.exec(`docker rmi -f ${tagName}`);
   if (rmImages.code !== 0) {
     return logError(`docker delete image ${tagName} failed.`);
   }
 
+  const filePath = cache ? '.fool-cache/Dockerfile' : '.fool-temp/Dockerfile';
+
   const buildImages = shell.exec(
-    `docker build --pull -t ${tagName} -f Dockerfile .`
+    `docker build --pull -t ${tagName} -f ${filePath} .`
   );
   if (buildImages.code !== 0) {
     return logError(`docker build image ${tagName} failed.`);

@@ -1,5 +1,0 @@
-{
-  "port":"2333",
-	"buildCommand": "pnpm build",
-	"installCommand": "pnpm install"
-}
