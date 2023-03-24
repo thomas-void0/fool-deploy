@@ -7,7 +7,7 @@ let options: Options = {
   packageCommand: 'pnpm',
   nodeVersion: '18.14-alpine',
   nginxVersion: '1.22.1',
-  tagName: 'foolDeploy:prod',
+  tagName: 'fool-deploy:prod',
 };
 
 function generateOptions() {
@@ -25,7 +25,7 @@ function generateOptions() {
   }
 
   // read foolDeploy.json config
-  const jsonPath = `${cwdPath}/foolDeploy.json`;
+  const jsonPath = `${cwdPath}/fool-deploy.json`;
   if (fs.existsSync(jsonPath)) {
     const str = fs.readFileSync(jsonPath).toString('utf-8');
     const externalOptions = JSON.parse(str);

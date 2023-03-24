@@ -29,17 +29,17 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "docker-deploy-web-new",
-  "author": "newrankyangjingyu",
-  "module": "dist/docker-deploy-web-new.esm.js",
+  "name": "fool-deploy",
+  "author": "thomas-void0",
+  "module": "dist/fool-deploy.esm.js",
   "version": "0.0.1",
   "size-limit": [
     {
-      "path": "dist/docker-deploy-web-new.cjs.production.min.js",
+      "path": "dist/fool-deploy.cjs.production.min.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/docker-deploy-web-new.esm.js",
+      "path": "dist/fool-deploy.esm.js",
       "limit": "10 KB"
     }
   ],

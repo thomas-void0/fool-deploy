@@ -4,14 +4,14 @@
 
 a fast deploy your web project in linux server. you maybe not know `docker`, `nginx`. don't worry, you just need to use something like `npm run deploy` command.it's can help you complete all.
 
-# precondition
+# Precondition
 
 1. a linux server.
 2. in your server [install docker engine](https://docs.docker.com/engine/install/centos/).
 
 Just so simple.
 
-# how use
+# How use
 
 1. install deps
 
@@ -33,4 +33,30 @@ $ npm i fool-deploy
 $ npm run deploy
 ```
 
-# configuration
+# Configuration
+
+if you want custom config, you need create `fool-deploy.json` in project root dir.
+
+```json
+{
+  "cache": true,
+  "port": 2333,
+  "packageCommand": "pnpm",
+  "nodeVersion": "18.14-alpine",
+  "nginxVersion": "1.22.1",
+  "imageName": "fool-deploy:prod"
+}
+```
+
+|     field      |           type           |             description             |      defult      |
+| :------------: | :----------------------: | :---------------------------------: | :--------------: |
+|     cache      |         boolean          |              use cache              |       true       |
+|      port      |          number          |   port number for project running   |       2333       |
+| packageCommand | `yar` or `npm` or `pnpm` | package manager for current project |       pnpm       |
+|  nodeVersion   |          string          |    node version of docker image     |   18.14-alpine   |
+|  nginxVersion  |          string          |    nginx version of docker image    |      1.22.1      |
+|   imageName    |          string          |        name of docker image         | fool-deploy:prod |
+
+# License
+
+[MIT](./LICENSE)
