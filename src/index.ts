@@ -11,8 +11,10 @@ import generateNginxContent from './lib/generateNginxContent';
 
 function create(options: Options, hash?: string) {
   const dirPath = options.cache ? config.cacheDir : config.tempDir;
+
   // del old dir
-  shell.rm(`-rf ${dirPath}`);
+  shell.rm('-rf', config.cacheDir);
+  shell.rm('-rf', config.tempDir);
 
   // create dir
   fs.mkdirSync(dirPath);
