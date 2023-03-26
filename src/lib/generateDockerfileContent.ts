@@ -45,7 +45,7 @@ RUN ${existPkgLock ? 'npm ci' : 'npm install'}
     builder = `
 COPY --from=deps /workspace/node_modules ./node_modules
 COPY . .
-RUN npm build
+RUN npm run build
   `;
   }
 
