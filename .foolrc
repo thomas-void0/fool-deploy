@@ -1,6 +1,0 @@
-{
-    "cache":false,
-    "port":3001,
-    "packageCommand":"yarn",
-    "imageName":"test"
-}
