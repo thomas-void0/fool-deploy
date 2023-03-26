@@ -2,15 +2,11 @@
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "files": [
-    "dist",
-    "src"
-  ],
   "engines": {
     "node": ">=10"
   },
   "bin": {
-    "fool": "./index.js"
+    "fool": "./dist/index.js"
   },
   "scripts": {
     "start": "tsdx watch",
@@ -36,7 +32,7 @@
   "name": "fool-deploy",
   "author": "thomas-void0",
   "module": "dist/fool-deploy.esm.js",
-  "version": "0.0.1",
+  "version": "0.0.1-beta",
   "size-limit": [
     {
       "path": "dist/fool-deploy.cjs.production.min.js",
