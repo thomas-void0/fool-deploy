@@ -25,7 +25,7 @@ function generateOptions() {
   }
 
   // read foolDeploy.json config
-  const jsonPath = `${cwdPath}/fool-deploy.json`;
+  const jsonPath = `${cwdPath}/.foolrc`;
   if (fs.existsSync(jsonPath)) {
     const str = fs.readFileSync(jsonPath).toString('utf-8');
     const externalOptions = JSON.parse(str);

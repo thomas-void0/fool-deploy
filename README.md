@@ -35,7 +35,7 @@ $ npm run deploy
 
 # Configuration
 
-if you want custom config, you need create `fool-deploy.json` in project root dir.
+if you want custom config, you need create `.foolrc` in project root dir.
 
 ```json
 {
