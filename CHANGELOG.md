@@ -1,4 +1,4 @@
-## 0.0.3-beta (2023-03-26)
+## 0.0.5-beta (2023-03-26)
 
 
 ### Bug Fixes
@@ -15,6 +15,7 @@
 
 * add create function ([70f8cb6](https://github.com/thomas-void0/fool-deploy/commit/70f8cb6ae544a4ea4a4bb59f4faed79a63054906))
 * add crypto ([2d3a1b2](https://github.com/thomas-void0/fool-deploy/commit/2d3a1b29adc2604a768255f3b3313deef0bc1572))
+* add output field ([721041e](https://github.com/thomas-void0/fool-deploy/commit/721041e88871661725736b511b79bf79345f9854))
 * add readme ([1aa6f60](https://github.com/thomas-void0/fool-deploy/commit/1aa6f605b0b10a8fde98ed4989048cd13a497393))
 * add shelljs ([a67abb9](https://github.com/thomas-void0/fool-deploy/commit/a67abb9f0004f5d337c876afa2d2cf4bd5775999))
 * add success log ([79fcd2e](https://github.com/thomas-void0/fool-deploy/commit/79fcd2e3b20c32c59067586b5e897daf699ec485))
