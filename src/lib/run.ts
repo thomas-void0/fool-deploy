@@ -1,4 +1,5 @@
-import { exec, echo, exit, ShellString } from 'shelljs';
+import { exec, echo, exit, ShellString, rm } from 'shelljs';
+import config from '../config';
 import { Options } from '../typings';
 
 function shellExec(result: ShellString, msg: string) {
@@ -26,12 +27,15 @@ function shellExec(result: ShellString, msg: string) {
 //   shell.exec('yum install docker-ce docker-ce-cli containerd.io');
 // }
 
-function run(options: Pick<Options, 'imageName' | 'port'>, filePath: string) {
+function run(
+  options: Pick<Options, 'imageName' | 'port' | 'cache'>,
+  filePath: string
+) {
   // if don't install docker
   // !isInstallDocker() && installDocker();
 
   // exec docker shell
-  const { imageName, port } = options;
+  const { imageName, port, cache } = options;
 
   shellExec(
     exec(`docker rmi -f ${imageName}`),
@@ -55,6 +59,9 @@ function run(options: Pick<Options, 'imageName' | 'port'>, filePath: string) {
     ),
     `docker run container ${name} failed.`
   );
+
+  // check cache
+  if (!cache) rm('-rf', config.tempDir);
 
   console.log(`happy landing. deploy successful.`);
 }
