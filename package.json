@@ -9,6 +9,9 @@
   "engines": {
     "node": ">=10"
   },
+  "bin": {
+    "fool": "./index.js"
+  },
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",

@@ -7,6 +7,7 @@ import generateDockerfileContent from './lib/generateDockerfileContent';
 import config from './config';
 import run from './lib/run';
 import { Options } from './typings';
+import generateNginxContent from './lib/generateNginxContent';
 
 function create(options: Options, hash?: string) {
   const dirPath = options.cache ? config.cacheDir : config.tempDir;
@@ -16,9 +17,12 @@ function create(options: Options, hash?: string) {
   // create dir
   fs.mkdirSync(dirPath);
 
+  const nginxContent = generateNginxContent();
+  fs.writeFileSync(`${dirPath}/nginx.conf`, nginxContent);
+
   options.cache && fs.writeFileSync(`${dirPath}/.hash`, hash!);
 
-  const dockerfileConent = generateDockerfileContent(options);
+  const dockerfileConent = generateDockerfileContent(options, dirPath);
   fs.writeFileSync(`${dirPath}/Dockerfile`, dockerfileConent);
 
   // run shell
