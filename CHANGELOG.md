@@ -1,4 +1,4 @@
-## 0.0.5-beta (2023-03-26)
+## 0.0.6-beta (2023-03-26)
 
 
 ### Bug Fixes
@@ -7,6 +7,7 @@
 * fix jest error ([ad204d8](https://github.com/thomas-void0/fool-deploy/commit/ad204d87f62b551b19664a3294fc9176a6f7145b))
 * fix node run bug ([5bf859e](https://github.com/thomas-void0/fool-deploy/commit/5bf859e35cda53dc9a2a6a68b46aa64b858b0df7))
 * fix npm build error ([7a334ed](https://github.com/thomas-void0/fool-deploy/commit/7a334ed2b3f5409d3dffab43d14cf0ef48975b19))
+* fix output generate bug ([c699cb8](https://github.com/thomas-void0/fool-deploy/commit/c699cb89d252269aabe7246fbb059d9f6d70a273))
 * fix pnpm error for copy .npmrc file ([87ec3cb](https://github.com/thomas-void0/fool-deploy/commit/87ec3cb2ddc07a9ef2301e709b9ab4845342b271))
 * fix zh.md link error ([70ba08a](https://github.com/thomas-void0/fool-deploy/commit/70ba08aaf7bcc79b34896ac8bd7c96bd123060fd))
 
