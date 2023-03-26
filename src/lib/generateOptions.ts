@@ -5,7 +5,7 @@ import getPackageManager from './getPackageManager';
 let options: Options = {
   cache: true,
   port: 2333,
-  packageCommand: 'pnpm',
+  packageCommand: 'npm',
   nodeVersion: '18.14-alpine',
   nginxVersion: '1.22.1',
   imageName: 'fool-deploy:prod',
@@ -42,7 +42,7 @@ function generateOptions() {
 
   // insure packageName is valid
   if (!['yarn', 'pnpm', 'npm'].includes(packageCommand)) {
-    options.packageCommand = getPackageManager() || 'pnpm';
+    options.packageCommand = getPackageManager() || 'npm';
   }
 
   return options;

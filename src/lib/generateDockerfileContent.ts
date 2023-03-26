@@ -11,20 +11,26 @@ function generateDockerfileContent(
 ) {
   const { nodeVersion, nginxVersion, packageCommand } = options;
 
-  let deps = `
+  let deps = '';
+  let builder = '';
+
+  if (packageCommand === 'pnpm') {
+    const existNpmrc = checkExist('.npmrc');
+    const existPnpmLock = checkExist('pnpm-lock.yaml');
+    deps = `
 RUN npm install -g pnpm
-COPY pnpm-lock.yaml .npmrc ./
-RUN pnpm fetch
+COPY ${existPnpmLock ? 'pnpm-lock.yaml' : ''} ${existNpmrc ? '.npmrc' : ''} ./
+${existPnpmLock ? 'RUN pnpm fetch' : ''}
 COPY package.json ./
 RUN pnpm install --frozen-lockfile --offline --ignore-scripts
   `;
-
-  let builder = `
+    builder = `
 RUN npm install -g pnpm
 COPY --from=deps /workspace/node_modules ./node_modules
 COPY . .
 RUN pnpm build
   `;
+  }
 
   if (packageCommand === 'npm') {
     const existNpmrc = checkExist('.npmrc');
@@ -57,6 +63,10 @@ COPY --from=deps /workspace/node_modules ./node_modules
 COPY . .
 RUN yarn build
   `;
+  }
+
+  if (!deps || !builder) {
+    throw TypeError('TypeError: deps and builder cannot be null.');
   }
 
   const str = `
