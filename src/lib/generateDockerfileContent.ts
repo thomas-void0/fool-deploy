@@ -6,10 +6,13 @@ function checkExist(filename: string) {
 }
 
 function generateDockerfileContent(
-  options: Pick<Options, 'nodeVersion' | 'nginxVersion' | 'packageCommand'>,
+  options: Pick<
+    Options,
+    'nodeVersion' | 'nginxVersion' | 'packageCommand' | 'output'
+  >,
   dirPath: string
 ) {
-  const { nodeVersion, nginxVersion, packageCommand } = options;
+  const { nodeVersion, nginxVersion, packageCommand, output } = options;
 
   let deps = '';
   let builder = '';
@@ -80,7 +83,7 @@ ${builder}
 
 FROM nginx:${nginxVersion} as runer
 WORKDIR /
-COPY --from=builder /workspace/dist/ /usr/share/nginx/html/
+COPY --from=builder /workspace/${output}/ /usr/share/nginx/html/
 RUN rm /etc/nginx/conf.d/default.conf
 COPY --from=builder /workspace/${dirPath}/nginx.conf /etc/nginx/conf.d/
   `;
