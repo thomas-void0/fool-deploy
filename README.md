@@ -42,8 +42,8 @@ if you want custom config, you need create `.foolrc` in project root dir.
   "cache": true,
   "port": 2333,
   "packageCommand": "pnpm",
-  "nodeVersion": "18.14-alpine",
-  "nginxVersion": "1.22.1",
+  "nodeVersion": "18.14-alpine", //more version info see: https://hub.docker.com/_/node
+  "nginxVersion": "1.22.1",//more version info see:  https://hub.docker.com/_/nginx
   "imageName": "fool-deploy:prod"
 }
 ```
@@ -52,7 +52,7 @@ if you want custom config, you need create `.foolrc` in project root dir.
 | :------------: | :----------------------: | :---------------------------------: | :--------------: |
 |     cache      |         boolean          |              use cache              |       true       |
 |      port      |          number          |   port number for project running   |       2333       |
-| packageCommand | `yar` or `npm` or `pnpm` | package manager for current project |       pnpm       |
+| packageCommand | `yar` or `npm` or `pnpm` | package manager for current project |  running input   |
 |  nodeVersion   |          string          |    node version of docker image     |   18.14-alpine   |
 |  nginxVersion  |          string          |    nginx version of docker image    |      1.22.1      |
 |   imageName    |          string          |        name of docker image         | fool-deploy:prod |

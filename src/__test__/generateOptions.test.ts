@@ -10,6 +10,7 @@ describe('generateOptions', () => {
       nginxVersion: expect.stringMatching(/^\d+(?:\.\d+){2}$/),
       imageName: expect.stringMatching(':'),
     };
-    expect(generateOptions()).toMatchObject(desiredHouse);
+    const o = generateOptions();
+    expect(o).toMatchObject(desiredHouse);
   });
 });
