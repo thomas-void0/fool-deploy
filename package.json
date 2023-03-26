@@ -1,9 +1,8 @@
 {
   "name": "fool-deploy",
   "license": "MIT",
-  "version": "0.0.2-beta",
+  "version": "0.0.3-beta",
   "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
   "engines": {
     "node": ">=10"
   },
@@ -11,20 +10,11 @@
     "fool": "./dist/index.js"
   },
   "scripts": {
-    "start": "tsdx watch",
-    "build": "tsdx build",
+    "build": "tsup src/index.ts",
     "test": "jest",
-    "lint": "tsdx lint",
-    "size": "size-limit",
-    "analyze": "size-limit --why",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
   "peerDependencies": {},
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsdx lint"
-    }
-  },
   "prettier": {
     "printWidth": 80,
     "semi": true,
@@ -32,28 +22,15 @@
     "trailingComma": "es5"
   },
   "author": "thomas-void0",
-  "module": "dist/fool-deploy.esm.js",
-  "size-limit": [
-    {
-      "path": "dist/fool-deploy.cjs.production.min.js",
-      "limit": "10 KB"
-    },
-    {
-      "path": "dist/fool-deploy.esm.js",
-      "limit": "10 KB"
-    }
-  ],
+  "module": "dist/index.js",
   "devDependencies": {
-    "@size-limit/preset-small-lib": "^8.2.4",
     "@types/shelljs": "^0.8.11",
     "conventional-changelog-cli": "^2.2.2",
-    "husky": "^8.0.3",
     "jest": "^29.5.0",
-    "size-limit": "^8.2.4",
     "ts-jest": "^29.0.5",
     "ts-node": "^10.9.1",
-    "tsdx": "^0.14.1",
     "tslib": "^2.5.0",
+    "tsup": "^6.7.0",
     "typescript": "^5.0.2"
   },
   "dependencies": {
