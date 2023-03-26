@@ -1,5 +1,7 @@
 {
+  "name": "fool-deploy",
   "license": "MIT",
+  "version": "0.0.2-beta",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "engines": {
@@ -29,10 +31,8 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "fool-deploy",
   "author": "thomas-void0",
   "module": "dist/fool-deploy.esm.js",
-  "version": "0.0.1-beta",
   "size-limit": [
     {
       "path": "dist/fool-deploy.cjs.production.min.js",
