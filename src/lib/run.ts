@@ -63,7 +63,9 @@ function run(
   // check cache
   if (!cache) rm('-rf', config.tempDir);
 
-  console.log(`happy landing. deploy successful. visit: `);
+  shellExec(exec(`ps -aux | grep ${name}`), `ps -aux failed`);
+
+  console.log(`happy landing. deploy successful. `);
 }
 
 export default run;
