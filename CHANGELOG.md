@@ -1,3 +1,21 @@
+## [0.0.11-beta](https://github.com/thomas-void0/fool-deploy/compare/v0.0.6-beta...v0.0.11-beta) (2023-03-27)
+
+
+### Bug Fixes
+
+* fix ip address bug ([33885c5](https://github.com/thomas-void0/fool-deploy/commit/33885c5f9588eb000e051cf40aca775416d25eef))
+* fix packagecommand get error ([b9a2ee6](https://github.com/thomas-void0/fool-deploy/commit/b9a2ee6cae3740808b109a270ecabab218a6d1f6))
+* fix shell exec error ([4b6087f](https://github.com/thomas-void0/fool-deploy/commit/4b6087f52d8f409d3f39405d51db68d2e13da246))
+
+
+### Features
+
+* add port tip ([bbf73dc](https://github.com/thomas-void0/fool-deploy/commit/bbf73dc13db6797dbea459a0fd001a96c899322f))
+* add probe port ([cfc7080](https://github.com/thomas-void0/fool-deploy/commit/cfc7080682e663a00f046718aafeac87eae9fbaf))
+* add visit address console ([c2d92cf](https://github.com/thomas-void0/fool-deploy/commit/c2d92cf4d35bb53558d1a3d2c606e4edabbaa13c))
+
+
+
 ## [0.0.9-beta](https://github.com/thomas-void0/fool-deploy/compare/v0.0.6-beta...v0.0.9-beta) (2023-03-27)
 
 
