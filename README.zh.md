@@ -5,7 +5,7 @@
 
 [English](./README.md)
 
-在 linux 服务器中快速部署你的 web 项目。你或许不知道`docker`,`nginx`.别担心，你只需要像是运行`npm run deploy`命令一样，它会帮你完成剩下的一切。
+你可以通过`fool-deploy`在服务器上快速且简单的部署你的博客，demo 页面等等。
 
 # 示范
 

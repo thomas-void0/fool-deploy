@@ -14,7 +14,7 @@ let options: Options = {
 
 async function generateOptions() {
   const cwdPath = process.cwd();
-  // read package.json for get nam
+  // read package.json for get name
   const pkgPath = `${cwdPath}/package.json`;
   if (fs.existsSync(pkgPath)) {
     const str = fs.readFileSync(pkgPath).toString('utf-8');

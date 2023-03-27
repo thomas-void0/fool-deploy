@@ -5,7 +5,9 @@
 
 [简体中文](./README.zh.md)
 
-a fast deploy your web project in linux server. you maybe not know `docker`, `nginx`. don't worry, you just need to use something like `npm run deploy` command.it's can help you complete all.
+a fast deploy your web project in linux server.
+
+you maybe not know `docker`, `nginx`. don't worry, you just need to use something like `npm run deploy` command.it's can help you complete all.
 
 # demo
 
