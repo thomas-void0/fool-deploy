@@ -1,6 +1,11 @@
 ## [0.0.8-beta](https://github.com/thomas-void0/docker-deploy-web/compare/v0.0.6-beta...v0.0.8-beta) (2023-03-27)
 
 
+### Bug Fixes
+
+* fix ip address bug ([33885c5](https://github.com/thomas-void0/docker-deploy-web/commit/33885c5f9588eb000e051cf40aca775416d25eef))
+
+
 ### Features
 
 * add port tip ([bbf73dc](https://github.com/thomas-void0/docker-deploy-web/commit/bbf73dc13db6797dbea459a0fd001a96c899322f))
