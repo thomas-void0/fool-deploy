@@ -5,4 +5,5 @@ export interface Options {
   nodeVersion: string;
   nginxVersion: string;
   imageName: string;
+  output: string;
 }

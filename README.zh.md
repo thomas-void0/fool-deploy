@@ -35,16 +35,17 @@ $ npm run deploy
 
 # 配置
 
-如果你想要自定义配置, 你需要在项目根目录下创建 `fool-deploy.json` 文件.
+如果你想要自定义配置, 你需要在项目根目录下创建 `.foolrc` 文件.
 
 ```json
 {
   "cache": true,
   "port": 2333,
   "packageCommand": "pnpm",
-  "nodeVersion": "18.14-alpine",
+  "nodeVersion": "18.14-alpine", 
   "nginxVersion": "1.22.1",
-  "imageName": "fool-deploy:prod"
+  "imageName": "fool-deploy:prod",
+  "output": "dist"
 }
 ```
 
@@ -52,10 +53,11 @@ $ npm run deploy
 | :------------: | :----------------------: | :----------------------: | :--------------: |
 |     cache      |         boolean          |       是否使用缓存       |       true       |
 |      port      |          number          |      项目运行端口号      |       2333       |
-| packageCommand | `yar` or `npm` or `pnpm` | 当前项目所使用的包管理器 |       pnpm       |
-|  nodeVersion   |          string          | docker 镜像的 node 版本  |   18.14-alpine   |
-|  nginxVersion  |          string          | docker 镜像的 nginx 版本 |      1.22.1      |
+| packageCommand | `yar` or `npm` or `pnpm` | 当前项目所使用的包管理器 |   终端执行输入   |
+|  [nodeVersion](https://hub.docker.com/_/node)   |          string          | docker 镜像的 node 版本  |   18.14-alpine   |
+|  [nginxVersion](https://hub.docker.com/_/nginx)  |          string          | docker 镜像的 nginx 版本 |      1.22.1      |
 |   imageName    |          string          |    docker 镜像的名称     | fool-deploy:prod |
+|     output     |          string          |  项目的构建产物输出目录  |       dist       |
 
 # 证书
 

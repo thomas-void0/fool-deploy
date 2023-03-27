@@ -35,27 +35,29 @@ $ npm run deploy
 
 # Configuration
 
-if you want custom config, you need create `fool-deploy.json` in project root dir.
+if you want custom config, you need create `.foolrc` in project root dir.
 
 ```json
 {
   "cache": true,
   "port": 2333,
   "packageCommand": "pnpm",
-  "nodeVersion": "18.14-alpine",
+  "nodeVersion": "18.14-alpine", 
   "nginxVersion": "1.22.1",
-  "imageName": "fool-deploy:prod"
+  "imageName": "fool-deploy:prod",
+  "output": "dist"
 }
 ```
 
-|     field      |           type           |             description             |      defult      |
-| :------------: | :----------------------: | :---------------------------------: | :--------------: |
-|     cache      |         boolean          |              use cache              |       true       |
-|      port      |          number          |   port number for project running   |       2333       |
-| packageCommand | `yar` or `npm` or `pnpm` | package manager for current project |       pnpm       |
-|  nodeVersion   |          string          |    node version of docker image     |   18.14-alpine   |
-|  nginxVersion  |          string          |    nginx version of docker image    |      1.22.1      |
-|   imageName    |          string          |        name of docker image         | fool-deploy:prod |
+|     field      |           type           |             description              |      defult      |
+| :------------: | :----------------------: | :----------------------------------: | :--------------: |
+|     cache      |         boolean          |              use cache               |       true       |
+|      port      |          number          |   port number for project running    |       2333       |
+| packageCommand | `yar` or `npm` or `pnpm` | package manager for current project  |  running input   |
+|  [nodeVersion](https://hub.docker.com/_/node)   |          string          |     node version of docker image     |   18.14-alpine   |
+|  [nginxVersion](https://hub.docker.com/_/nginx)   |          string          |    nginx version of docker image     |      1.22.1      |
+|   imageName    |          string          |         name of docker image         | fool-deploy:prod |
+|     output     |          string          | build output folder for your project |       dist       |
 
 # License
 

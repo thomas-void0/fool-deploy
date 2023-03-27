@@ -1,13 +1,15 @@
 import fs from 'fs';
 import { Options } from '../typings';
+import getPackageManager from './getPackageManager';
 
 let options: Options = {
   cache: true,
   port: 2333,
-  packageCommand: 'pnpm',
+  packageCommand: 'npm',
   nodeVersion: '18.14-alpine',
   nginxVersion: '1.22.1',
   imageName: 'fool-deploy:prod',
+  output: 'dist',
 };
 
 function generateOptions() {
@@ -25,11 +27,23 @@ function generateOptions() {
   }
 
   // read foolDeploy.json config
-  const jsonPath = `${cwdPath}/fool-deploy.json`;
+  const jsonPath = `${cwdPath}/.foolrc`;
   if (fs.existsSync(jsonPath)) {
     const str = fs.readFileSync(jsonPath).toString('utf-8');
     const externalOptions = JSON.parse(str);
     options = { ...options, ...externalOptions };
+  }
+
+  const { imageName, packageCommand } = options;
+
+  // insure imageName is valid
+  if (imageName.split(':').length < 2) {
+    options.imageName = `${imageName}:prod`;
+  }
+
+  // insure packageName is valid
+  if (!['yarn', 'pnpm', 'npm'].includes(packageCommand)) {
+    options.packageCommand = getPackageManager() || 'npm';
   }
 
   return options;

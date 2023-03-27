@@ -1,9 +1,13 @@
-import shell from 'shelljs';
+import { exec, echo, exit, ShellString, rm } from 'shelljs';
+import config from '../config';
 import { Options } from '../typings';
 
-function logError(msg: string) {
-  shell.echo(`Error: ${msg}`);
-  shell.exit(1);
+function shellExec(result: ShellString, msg: string) {
+  const { code } = result;
+  if (code !== 0) {
+    echo(`Error: ${msg}`);
+    exit(1);
+  }
 }
 
 // check docker install
@@ -23,37 +27,41 @@ function logError(msg: string) {
 //   shell.exec('yum install docker-ce docker-ce-cli containerd.io');
 // }
 
-function run(options: Pick<Options, 'imageName' | 'port'>, filePath: string) {
+function run(
+  options: Pick<Options, 'imageName' | 'port' | 'cache'>,
+  filePath: string
+) {
   // if don't install docker
   // !isInstallDocker() && installDocker();
 
   // exec docker shell
-  const { imageName, port } = options;
+  const { imageName, port, cache } = options;
 
-  const rmImages = shell.exec(`docker rmi -f ${imageName}`);
-  if (rmImages.code !== 0) {
-    return logError(`docker delete image ${imageName} failed.`);
-  }
-
-  const buildImages = shell.exec(
-    `docker build --pull -t ${imageName} -f ${filePath} .`
+  shellExec(
+    exec(`docker rmi -f ${imageName}`),
+    `docker delete image ${imageName} failed.`
   );
-  if (buildImages.code !== 0) {
-    return logError(`docker build image ${imageName} failed.`);
-  }
+
+  shellExec(
+    exec(`docker build --pull -t ${imageName} -f ${filePath} .`),
+    `docker build image ${imageName} failed.`
+  );
 
   const [name] = imageName.split(':');
-  const rmContainer = shell.exec(`docker rm -f ${name}`);
-  if (rmContainer.code !== 0) {
-    return logError(`docker delete container ${name} failed.`);
-  }
-
-  const runContainer = shell.exec(
-    `docker run --name ${name} --restart=always -d -p ${port}:80 ${imageName}`
+  shellExec(
+    exec(`docker rm -f ${name}`),
+    `docker delete container ${name} failed.`
   );
-  if (runContainer.code !== 0) {
-    return logError(`docker run container ${name} failed.`);
-  }
+
+  shellExec(
+    exec(
+      `docker run --name ${name} --restart=always -d -p ${port}:80 ${imageName}`
+    ),
+    `docker run container ${name} failed.`
+  );
+
+  // check cache
+  if (!cache) rm('-rf', config.tempDir);
 
   console.log(`happy landing. deploy successful.`);
 }

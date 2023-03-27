@@ -6,24 +6,34 @@ function checkExist(filename: string) {
 }
 
 function generateDockerfileContent(
-  options: Pick<Options, 'nodeVersion' | 'nginxVersion' | 'packageCommand'>
+  options: Pick<
+    Options,
+    'nodeVersion' | 'nginxVersion' | 'packageCommand' | 'output'
+  >,
+  dirPath: string
 ) {
-  const { nodeVersion, nginxVersion, packageCommand } = options;
+  const { nodeVersion, nginxVersion, packageCommand, output } = options;
 
-  let deps = `
+  let deps = '';
+  let builder = '';
+
+  if (packageCommand === 'pnpm') {
+    const existNpmrc = checkExist('.npmrc');
+    const existPnpmLock = checkExist('pnpm-lock.yaml');
+    deps = `
 RUN npm install -g pnpm
-COPY pnpm-lock.yaml .npmrc ./
-RUN pnpm fetch
+COPY ${existPnpmLock ? 'pnpm-lock.yaml' : ''} ${existNpmrc ? '.npmrc' : ''} ./
+${existPnpmLock ? 'RUN pnpm fetch' : ''}
 COPY package.json ./
 RUN pnpm install --frozen-lockfile --offline --ignore-scripts
   `;
-
-  let builder = `
+    builder = `
 RUN npm install -g pnpm
 COPY --from=deps /workspace/node_modules ./node_modules
 COPY . .
 RUN pnpm build
   `;
+  }
 
   if (packageCommand === 'npm') {
     const existNpmrc = checkExist('.npmrc');
@@ -38,7 +48,7 @@ RUN ${existPkgLock ? 'npm ci' : 'npm install'}
     builder = `
 COPY --from=deps /workspace/node_modules ./node_modules
 COPY . .
-RUN npm build
+RUN npm run build
   `;
   }
 
@@ -58,6 +68,10 @@ RUN yarn build
   `;
   }
 
+  if (!deps || !builder) {
+    throw TypeError('TypeError: deps and builder cannot be null.');
+  }
+
   const str = `
 FROM node:${nodeVersion} as deps
 WORKDIR /workspace
@@ -69,9 +83,9 @@ ${builder}
 
 FROM nginx:${nginxVersion} as runer
 WORKDIR /
-COPY --from=builder /workspace/dist/ /usr/share/nginx/html/
+COPY --from=builder /workspace/${output}/ /usr/share/nginx/html/
 RUN rm /etc/nginx/conf.d/default.conf
-COPY --from=builder /workspace/nginx.conf /etc/nginx/conf.d/
+COPY --from=builder /workspace/${dirPath}/nginx.conf /etc/nginx/conf.d/
   `;
   return str;
 }
