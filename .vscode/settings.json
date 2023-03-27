@@ -1,9 +1,17 @@
 {
-	"files.associations": {
-		"*.json": "jsonc"
-	},
-	"eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
-	"git.mergeEditor": false,
-	"editor.formatOnSave": true,
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.associations": {
+    "*.json": "jsonc"
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "git.mergeEditor": false,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[ignore]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  }
 }
