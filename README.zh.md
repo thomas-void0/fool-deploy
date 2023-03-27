@@ -1,9 +1,7 @@
 # fool-deploy
 
-<img src="https://img.shields.io/npm/v/fool-deploy.svg" alt="npm package">
-
 [![Test](https://github.com/thomas-void0/fool-deploy/actions/workflows/test.yml/badge.svg)](https://github.com/thomas-void0/fool-deploy/actions/workflows/test.yml)
-[![Publish](https://github.com/thomas-void0/fool-deploy/actions/workflows/publish.yml/badge.svg)](https://github.com/thomas-void0/fool-deploy/actions/workflows/publish.yml)
+[![Publish](https://github.com/thomas-void0/fool-deploy/actions/workflows/publish.yml/badge.svg)](https://github.com/thomas-void0/fool-deploy/actions/workflows/publish.yml) <img src="https://img.shields.io/npm/v/fool-deploy.svg" alt="npm package">
 
 [English](./README.md)
 
