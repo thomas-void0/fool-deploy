@@ -32,14 +32,14 @@ function create(options: Options, hash?: string) {
   run(options, `${dirPath}/Dockerfile`);
 }
 
-function init() {
+async function init() {
   // check docker install
   if (!isInstallDocker()) {
     throw Error(
       `Error: current environment not found docker, if you don't install docker, please see https://docs.docker.com/get-docker/ download docker.`
     );
   }
-  const options = generateOptions();
+  const options = await generateOptions();
   const { cache } = options;
 
   if (!cache) {

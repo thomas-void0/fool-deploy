@@ -10,6 +10,7 @@ describe('generateHash', () => {
         nodeVersion: '18.14-alpine',
         nginxVersion: '1.22.1',
         imageName: 'fool-deploy:prod',
+        output: 'dist',
       })
     ).toMatch(/^[a-fA-F0-9]{32}$/);
   });

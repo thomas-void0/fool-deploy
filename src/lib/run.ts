@@ -63,7 +63,7 @@ function run(
   // check cache
   if (!cache) rm('-rf', config.tempDir);
 
-  console.log(`happy landing. deploy successful.`);
+  console.log(`happy landing. deploy successful. visit: `);
 }
 
 export default run;

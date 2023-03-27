@@ -11,6 +11,6 @@ describe('generateOptions', () => {
       imageName: expect.stringMatching(':'),
     };
     const o = generateOptions();
-    expect(o).toMatchObject(desiredHouse);
+    expect(o).resolves.toMatchObject(desiredHouse);
   });
 });

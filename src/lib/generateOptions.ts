@@ -1,6 +1,7 @@
 import fs from 'fs';
 import { Options } from '../typings';
-import getPackageManager from './getPackageManager';
+import getPackageCommand from './getPackageCommand';
+import getValidPort from './getValidPort';
 
 let options: Options = {
   cache: true,
@@ -12,14 +13,14 @@ let options: Options = {
   output: 'dist',
 };
 
-function generateOptions() {
+async function generateOptions() {
   const cwdPath = process.cwd();
-  // read package.json for get name and version
+  // read package.json for get nam
   const pkgPath = `${cwdPath}/package.json`;
   if (fs.existsSync(pkgPath)) {
     const str = fs.readFileSync(pkgPath).toString('utf-8');
-    const { name = 'foolDeploy', version = 'prod' } = JSON.parse(str);
-    options.imageName = `${name}:${version}`;
+    const { name = 'fool-deploy' } = JSON.parse(str);
+    options.imageName = `${name}:prod`;
   } else {
     throw new Error(
       `Error: ${cwdPath} not found package.json，shell must running in projcet root dir.`
@@ -43,8 +44,11 @@ function generateOptions() {
 
   // insure packageName is valid
   if (!['yarn', 'pnpm', 'npm'].includes(packageCommand)) {
-    options.packageCommand = getPackageManager() || 'npm';
+    options.packageCommand = getPackageCommand() || 'npm';
   }
+
+  // insure port is valid
+  options.port = await getValidPort(options.port);
 
   return options;
 }
