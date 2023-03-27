@@ -25,7 +25,8 @@
   "scripts": {
     "build": "tsup",
     "test": "jest",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "husa": "node ./dist/index.js"
   },
   "tsup": {
     "entry": [

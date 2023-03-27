@@ -6,7 +6,6 @@ import getValidPort from './getValidPort';
 let options: Options = {
   cache: true,
   port: 2333,
-  packageCommand: 'npm',
   nodeVersion: '18.14-alpine',
   nginxVersion: '1.22.1',
   imageName: 'fool-deploy:prod',
@@ -43,8 +42,8 @@ async function generateOptions() {
   }
 
   // insure packageName is valid
-  if (!['yarn', 'pnpm', 'npm'].includes(packageCommand)) {
-    options.packageCommand = getPackageCommand() || 'npm';
+  if (!packageCommand) {
+    options.packageCommand = getPackageCommand();
   }
 
   // insure port is valid

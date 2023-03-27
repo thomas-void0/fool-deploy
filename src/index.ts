@@ -9,6 +9,7 @@ import config from './config';
 import run from './lib/run';
 import { Options } from './typings';
 import generateNginxContent from './lib/generateNginxContent';
+import getPackageCommand from './lib/getPackageCommand';
 
 function create(options: Options, hash?: string) {
   const dirPath = options.cache ? config.cacheDir : config.tempDir;
@@ -33,6 +34,9 @@ function create(options: Options, hash?: string) {
 }
 
 async function init() {
+  const command = getPackageCommand();
+  console.log('command:', command);
+  return;
   // check docker install
   if (!isInstallDocker()) {
     throw Error(
