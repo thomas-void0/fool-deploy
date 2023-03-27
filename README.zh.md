@@ -11,8 +11,8 @@
 
 部署由 `vite` 和 `create-react-app` 创建的 app:
 
-![vite](./img/vite-vue.jpg)
-![create-react-app](./img/create-react-app.jpg)
+![image](https://user-images.githubusercontent.com/48620706/227898197-5314717d-5184-4d64-b7c9-d6f0bfe9b8d2.png)
+![image](https://user-images.githubusercontent.com/48620706/227898276-aeea45d6-9d6b-40f4-90cc-aa48b73ba420.png)
 
 # 前置条件
 
