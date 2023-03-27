@@ -7,6 +7,13 @@
 
 在 linux 服务器中快速部署你的 web 项目。你或许不知道`docker`,`nginx`.别担心，你只需要像是运行`npm run deploy`命令一样，它会帮你完成剩下的一切。
 
+# 示范
+
+部署由 `vite` 和 `create-react-app` 创建的 app:
+
+![vite](./img/vite-vue.jpg)
+![create-react-app](./img/create-react-app.jpg)
+
 # 前置条件
 
 1. 一台 linux 服务器.

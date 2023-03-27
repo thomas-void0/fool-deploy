@@ -1,4 +1,4 @@
-# fool-deploy 
+# fool-deploy
 
 [![Test](https://github.com/thomas-void0/fool-deploy/actions/workflows/test.yml/badge.svg)](https://github.com/thomas-void0/fool-deploy/actions/workflows/test.yml)
 [![Publish](https://github.com/thomas-void0/fool-deploy/actions/workflows/publish.yml/badge.svg)](https://github.com/thomas-void0/fool-deploy/actions/workflows/publish.yml) <img src="https://img.shields.io/npm/v/fool-deploy.svg" alt="npm package">
@@ -6,6 +6,13 @@
 [简体中文](./README.zh.md)
 
 a fast deploy your web project in linux server. you maybe not know `docker`, `nginx`. don't worry, you just need to use something like `npm run deploy` command.it's can help you complete all.
+
+# demo
+
+Deploy the application created by `vite` and `create-react-app`:
+
+![vite](./img/vite-vue.jpg)
+![create-react-app](./img/create-react-app.jpg)
 
 # Precondition
 
