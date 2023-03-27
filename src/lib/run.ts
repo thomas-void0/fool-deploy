@@ -1,6 +1,7 @@
 import { exec, echo, exit, ShellString, rm } from 'shelljs';
 import config from '../config';
 import { Options } from '../typings';
+import { publicIp } from 'public-ip';
 
 function shellExec(result: ShellString, msg: string) {
   const { code } = result;
@@ -63,9 +64,17 @@ function run(
   // check cache
   if (!cache) rm('-rf', config.tempDir);
 
-  shellExec(exec(`ps -aux | grep ${name}`), `ps -aux failed`);
-
-  console.log(`happy landing. deploy successful. `);
+  publicIp()
+    .then((address) => {
+      console.log(
+        `happy landing. deploy successful. visit ${address}:${options.port}.`
+      );
+    })
+    .catch(() => {
+      console.log(
+        `happy landing. deploy successful. running port is ${options.port}.`
+      );
+    });
 }
 
 export default run;

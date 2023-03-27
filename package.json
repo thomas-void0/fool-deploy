@@ -1,7 +1,7 @@
 {
   "name": "fool-deploy",
   "license": "MIT",
-  "version": "0.0.7-beta",
+  "version": "0.0.8-beta",
   "main": "dist/index.js",
   "engines": {
     "node": ">=10"
@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "jest": "^29.5.0",
+    "public-ip": "^6.0.1",
     "shelljs": "^0.8.5",
     "ts-jest": "^29.0.5"
   }
