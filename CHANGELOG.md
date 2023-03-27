@@ -1,10 +1,11 @@
-## [0.0.7-beta](https://github.com/thomas-void0/docker-deploy-web/compare/v0.0.6-beta...v0.0.7-beta) (2023-03-27)
+## [0.0.8-beta](https://github.com/thomas-void0/docker-deploy-web/compare/v0.0.6-beta...v0.0.8-beta) (2023-03-27)
 
 
 ### Features
 
 * add port tip ([bbf73dc](https://github.com/thomas-void0/docker-deploy-web/commit/bbf73dc13db6797dbea459a0fd001a96c899322f))
 * add probe port ([cfc7080](https://github.com/thomas-void0/docker-deploy-web/commit/cfc7080682e663a00f046718aafeac87eae9fbaf))
+* add visit address console ([c2d92cf](https://github.com/thomas-void0/docker-deploy-web/commit/c2d92cf4d35bb53558d1a3d2c606e4edabbaa13c))
 
 
 
