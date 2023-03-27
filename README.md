@@ -11,8 +11,8 @@ a fast deploy your web project in linux server. you maybe not know `docker`, `ng
 
 Deploy the application created by `vite` and `create-react-app`:
 
-![vite](./img/vite-vue.jpg)
-![create-react-app](./img/create-react-app.jpg)
+![image](https://user-images.githubusercontent.com/48620706/227898197-5314717d-5184-4d64-b7c9-d6f0bfe9b8d2.png)
+![image](https://user-images.githubusercontent.com/48620706/227898276-aeea45d6-9d6b-40f4-90cc-aa48b73ba420.png)
 
 # Precondition
 
