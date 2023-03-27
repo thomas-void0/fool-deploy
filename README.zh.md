@@ -42,22 +42,22 @@ $ npm run deploy
   "cache": true,
   "port": 2333,
   "packageCommand": "pnpm",
-  "nodeVersion": "18.14-alpine", 
+  "nodeVersion": "18.14-alpine",
   "nginxVersion": "1.22.1",
   "imageName": "fool-deploy:prod",
   "output": "dist"
 }
 ```
 
-|      字段      |           类型           |           描述           |      默认值      |
-| :------------: | :----------------------: | :----------------------: | :--------------: |
-|     cache      |         boolean          |       是否使用缓存       |       true       |
-|      port      |          number          |      项目运行端口号      |       2333       |
-| packageCommand | `yar` or `npm` or `pnpm` | 当前项目所使用的包管理器 |   终端执行输入   |
-|  [nodeVersion](https://hub.docker.com/_/node)   |          string          | docker 镜像的 node 版本  |   18.14-alpine   |
-|  [nginxVersion](https://hub.docker.com/_/nginx)  |          string          | docker 镜像的 nginx 版本 |      1.22.1      |
-|   imageName    |          string          |    docker 镜像的名称     | fool-deploy:prod |
-|     output     |          string          |  项目的构建产物输出目录  |       dist       |
+|                      字段                      |           类型           |           描述           |      默认值       |
+| :--------------------------------------------: | :----------------------: | :----------------------: | :---------------: |
+|                     cache                      |         boolean          |       是否使用缓存       |       true        |
+|                      port                      |          number          |      项目运行端口号      |       2333        |
+|                 packageCommand                 | `yar` or `npm` or `pnpm` | 当前项目所使用的包管理器 |   终端执行输入    |
+|  [nodeVersion](https://hub.docker.com/_/node)  |          string          | docker 镜像的 node 版本  |   18.14-alpine    |
+| [nginxVersion](https://hub.docker.com/_/nginx) |          string          | docker 镜像的 nginx 版本 |      1.22.1       |
+|                   imageName                    |          string          |    docker 镜像的名称     | package.json name |
+|                     output                     |          string          |  项目的构建产物输出目录  |       dist        |
 
 # 证书
 
