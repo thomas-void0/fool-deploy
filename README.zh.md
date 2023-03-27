@@ -23,7 +23,7 @@ $ npm i fool-deploy
 
 ```shell
 "scripts": {
-  "deploy":"fool-deploy"
+  "deploy":"fool"
 }
 ```
 
