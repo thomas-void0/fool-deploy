@@ -1,7 +1,7 @@
 {
   "name": "fool-deploy",
   "license": "MIT",
-  "version": "0.0.10-beta",
+  "version": "0.0.11-beta",
   "main": "dist/index.js",
   "author": "thomas-void0",
   "module": "dist/index.js",
@@ -25,7 +25,7 @@
   "scripts": {
     "build": "tsup",
     "test": "jest",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "husa": "node ./dist/index.js"
   },
   "tsup": {
