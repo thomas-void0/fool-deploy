@@ -3,6 +3,19 @@
   "license": "MIT",
   "version": "0.0.9-beta",
   "main": "dist/index.js",
+  "author": "thomas-void0",
+  "module": "dist/index.js",
+  "description": "a fast deploy your web project in linux server",
+  "repository": "https://github.com/thomas-void0/fool-deploy",
+  "homepage": "https://github.com/thomas-void0/fool-deploy#readme",
+  "keywords": [
+    "deploy",
+    "nginx",
+    "docker",
+    "web deploy",
+    "前端部署",
+    "部署"
+  ],
   "engines": {
     "node": ">=14.16"
   },
@@ -29,8 +42,6 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "author": "thomas-void0",
-  "module": "dist/index.js",
   "devDependencies": {
     "@types/jest": "^29.5.0",
     "@types/shelljs": "^0.8.11",
