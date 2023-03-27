@@ -4,15 +4,23 @@
   "version": "0.0.8-beta",
   "main": "dist/index.js",
   "engines": {
-    "node": ">=10"
+    "node": ">=14.16"
   },
   "bin": {
     "fool": "./dist/index.js"
   },
   "scripts": {
-    "build": "tsup src/index.ts",
+    "build": "tsup",
     "test": "jest",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
+  },
+  "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "splitting": false,
+    "sourcemap": false,
+    "clean": true
   },
   "peerDependencies": {},
   "prettier": {
@@ -36,7 +44,6 @@
   },
   "dependencies": {
     "jest": "^29.5.0",
-    "public-ip": "^6.0.1",
     "shelljs": "^0.8.5",
     "ts-jest": "^29.0.5"
   }

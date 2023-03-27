@@ -1,13 +1,12 @@
-import { exec, echo, exit, ShellString, rm } from 'shelljs';
+import shell from 'shelljs';
 import config from '../config';
 import { Options } from '../typings';
-import { publicIp } from 'public-ip';
 
-function shellExec(result: ShellString, msg: string) {
+function shellExec(result: shell.ShellString, msg: string) {
   const { code } = result;
   if (code !== 0) {
-    echo(`Error: ${msg}`);
-    exit(1);
+    shell.echo(`Error: ${msg}`);
+    shell.exit(1);
   }
 }
 
@@ -39,42 +38,34 @@ function run(
   const { imageName, port, cache } = options;
 
   shellExec(
-    exec(`docker rmi -f ${imageName}`),
+    shell.exec(`docker rmi -f ${imageName}`),
     `docker delete image ${imageName} failed.`
   );
 
   shellExec(
-    exec(`docker build --pull -t ${imageName} -f ${filePath} .`),
+    shell.exec(`docker build --pull -t ${imageName} -f ${filePath} .`),
     `docker build image ${imageName} failed.`
   );
 
   const [name] = imageName.split(':');
   shellExec(
-    exec(`docker rm -f ${name}`),
+    shell.exec(`docker rm -f ${name}`),
     `docker delete container ${name} failed.`
   );
 
   shellExec(
-    exec(
+    shell.exec(
       `docker run --name ${name} --restart=always -d -p ${port}:80 ${imageName}`
     ),
     `docker run container ${name} failed.`
   );
 
   // check cache
-  if (!cache) rm('-rf', config.tempDir);
+  if (!cache) shell.rm('-rf', config.tempDir);
 
-  publicIp()
-    .then((address) => {
-      console.log(
-        `happy landing. deploy successful. visit ${address}:${options.port}.`
-      );
-    })
-    .catch(() => {
-      console.log(
-        `happy landing. deploy successful. running port is ${options.port}.`
-      );
-    });
+  console.log(
+    `happy landing. deploy successful. running port is ${options.port}.`
+  );
 }
 
 export default run;
