@@ -1,5 +1,10 @@
 # fool-deploy
 
+<img src="https://img.shields.io/npm/v/fool-deploy.svg" alt="npm package">
+
+[![Test](https://github.com/thomas-void0/fool-deploy/actions/workflows/test.yml/badge.svg)](https://github.com/thomas-void0/fool-deploy/actions/workflows/test.yml)
+[![Publish](https://github.com/thomas-void0/fool-deploy/actions/workflows/publish.yml/badge.svg)](https://github.com/thomas-void0/fool-deploy/actions/workflows/publish.yml)
+
 [简体中文](./README.zh.md)
 
 a fast deploy your web project in linux server. you maybe not know `docker`, `nginx`. don't worry, you just need to use something like `npm run deploy` command.it's can help you complete all.

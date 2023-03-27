@@ -1,5 +1,10 @@
 # fool-deploy
 
+<img src="https://img.shields.io/npm/v/fool-deploy.svg" alt="npm package">
+
+[![Test](https://github.com/thomas-void0/fool-deploy/actions/workflows/test.yml/badge.svg)](https://github.com/thomas-void0/fool-deploy/actions/workflows/test.yml)
+[![Publish](https://github.com/thomas-void0/fool-deploy/actions/workflows/publish.yml/badge.svg)](https://github.com/thomas-void0/fool-deploy/actions/workflows/publish.yml)
+
 [English](./README.md)
 
 在 linux 服务器中快速部署你的 web 项目。你或许不知道`docker`,`nginx`.别担心，你只需要像是运行`npm run deploy`命令一样，它会帮你完成剩下的一切。
