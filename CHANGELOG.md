@@ -1,3 +1,7 @@
+## [0.0.13](https://github.com/thomas-void0/fool-deploy/compare/v0.0.12...v0.0.13) (2023-03-27)
+
+
+
 ## [0.0.11-beta](https://github.com/thomas-void0/fool-deploy/compare/v0.0.6-beta...v0.0.11-beta) (2023-03-27)
 
 
