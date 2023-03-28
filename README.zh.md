@@ -67,7 +67,8 @@ $ pnpm deploy
 {
   "cache": true,
   "port": 2333,
-  "packageCommand": "pnpm",
+  "packageCommand": "npm",
+  "buildCommand": "npm run build",
   "nodeVersion": "18.14-alpine",
   "nginxVersion": "1.22.1",
   "imageName": "fool-deploy:prod",
@@ -77,7 +78,7 @@ $ pnpm deploy
 
 ## cache
 
-`cache`:表示是否使用缓存，默认为`true`。如果设置`true`，将在第一次构建后，在项目的根目录生成`.fool-cache`目录。以后的每一次构建，在`.foolrc`配置不变的情况下，会直接运行`.fool-cache`中的配置文件。
+`cache`:表示是否使用缓存，默认为`true`。如果设置`true`，将在第一次构建后，在项目的根目录生成`.fool-cache`目录。以后的每一次构建，在`.foolrc`配置不变的情况下，会直接运行`.fool-cache`中的配置文件。使用缓存可以缩短项目后续部署的时间。
 
 ## port
 
@@ -86,6 +87,10 @@ $ pnpm deploy
 ## packageCommand
 
 `packageCommand`:表示项目安装依赖和打包所使用的包管理器,默认会读取你执行部署命令所使用的包管理器,比如你执行`yarn deploy`，那么该选项会被指定为`yarn`。可配置的选项有：`npm` | `yarn` | `pnpm`。此选项非常重要，假设项目打包所使用的`npm`管理器，但是在部署时指定为`yarn`运行。可能会导致部署过程中安装依赖或者执行构建失败。
+
+## buildCommand
+
+`buildCommand`:表示项目打包执行的命令，默认为`packageCommand`所指定的`[packageCommand] build`。
 
 ## nodeVersion
 
@@ -97,7 +102,7 @@ $ pnpm deploy
 
 ## imageName
 
-`imageName`:表示 docker 构建的镜像名，默认会读取`package.json`中的`name`字段。最后构成的格式为`name:prod`。
+`imageName`:表示 docker 构建的镜像名，默认会读取`package.json`中的`name`字段。最后构成的格式为`[name]:prod`。
 
 ## output
 

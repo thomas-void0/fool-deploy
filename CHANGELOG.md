@@ -1,3 +1,12 @@
+# [0.1.0](https://github.com/thomas-void0/fool-deploy/compare/v0.0.12...v0.1.0) (2023-03-28)
+
+
+### Features
+
+* add packageCommand field ([dae2ad6](https://github.com/thomas-void0/fool-deploy/commit/dae2ad604d3d02bd4df43684d755e91d5f7d61da))
+
+
+
 ## [0.0.13](https://github.com/thomas-void0/fool-deploy/compare/v0.0.12...v0.0.13) (2023-03-27)
 
 

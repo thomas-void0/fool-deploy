@@ -67,7 +67,8 @@ if you want custom config, you need create `.foolrc` in project root dir.
 {
   "cache": true,
   "port": 2333,
-  "packageCommand": "pnpm",
+  "packageCommand": "npm",
+  "buildCommand": "npm run build",
   "nodeVersion": "18.14-alpine",
   "nginxVersion": "1.22.1",
   "imageName": "fool-deploy:prod",
@@ -77,7 +78,8 @@ if you want custom config, you need create `.foolrc` in project root dir.
 
 ## cache
 
-`cache`:Indicates whether to use caching; defaults to `true`。If you set`true`，The `.fool-cache` directory will be generated at the root of the project after the first build.Each subsequent build will run the configuration file in `.foolrc` with the same `.foolrc` configuration
+`cache`:Indicates whether to use caching; defaults to `true`。If you set`true`，The `.fool-cache` directory will be generated at the root of the project after the first build.Each subsequent build will run the configuration file in `.foolrc` with the same `.foolrc` configuration.
+Using caching can shorten the time it takes to deploy your project later.
 
 ## port
 
@@ -88,6 +90,10 @@ if you want custom config, you need create `.foolrc` in project root dir.
 `packageCommand`:Indicates the package manager used to install dependencies and build the project. By default, this will read the package manager you used to execute the deployment command.
 for example you running `yarn deploy`，the option is specified as `yarn`。The configurable options are `npm` | `yarn` | `pnpm`。This option is very important，
 Suppose the `npm` manager used by the project is packaged, but specified to run as `yarn` at deployment time. This could cause dependencies to fail to install or build during deployment.
+
+## buildCommand
+
+`buildCommand`:Indicates the project build command，defaults to specified `packageCommand` field `[packageCommand] build`.
 
 ## nodeVersion
 
