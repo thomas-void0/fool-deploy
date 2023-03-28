@@ -8,11 +8,16 @@ function checkExist(filename: string) {
 function generateDockerfileContent(
   options: Pick<
     Options,
-    'nodeVersion' | 'nginxVersion' | 'packageCommand' | 'output'
+    | 'nodeVersion'
+    | 'nginxVersion'
+    | 'packageCommand'
+    | 'output'
+    | 'buildCommand'
   >,
   dirPath: string
 ) {
-  const { nodeVersion, nginxVersion, packageCommand, output } = options;
+  const { nodeVersion, nginxVersion, packageCommand, output, buildCommand } =
+    options;
 
   let deps = '';
   let builder = '';
@@ -31,7 +36,7 @@ RUN pnpm install --frozen-lockfile --offline --ignore-scripts
 RUN npm install -g pnpm
 COPY --from=deps /workspace/node_modules ./node_modules
 COPY . .
-RUN pnpm build
+RUN ${buildCommand}
   `;
   }
 
@@ -48,7 +53,7 @@ RUN ${existPkgLock ? 'npm ci' : 'npm install'}
     builder = `
 COPY --from=deps /workspace/node_modules ./node_modules
 COPY . .
-RUN npm run build
+RUN ${buildCommand}
   `;
   }
 
@@ -64,7 +69,7 @@ RUN ${existYarnLock ? 'yarn install --frozen-lockfile' : 'yarn install'}
     builder = `
 COPY --from=deps /workspace/node_modules ./node_modules
 COPY . .
-RUN yarn build
+RUN ${buildCommand}
   `;
   }
 

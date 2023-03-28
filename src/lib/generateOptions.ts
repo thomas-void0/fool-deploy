@@ -34,7 +34,7 @@ async function generateOptions() {
     options = { ...options, ...externalOptions };
   }
 
-  const { imageName, packageCommand } = options;
+  const { imageName, packageCommand, buildCommand } = options;
 
   // insure imageName is valid
   if (imageName.split(':').length < 2) {
@@ -44,6 +44,15 @@ async function generateOptions() {
   // insure packageName is valid
   if (!packageCommand) {
     options.packageCommand = getPackageCommand();
+  }
+
+  // insure buildCommand
+  if (!buildCommand) {
+    const { packageCommand } = options;
+    options.buildCommand =
+      packageCommand === 'npm'
+        ? `${packageCommand} run build`
+        : `${packageCommand} build`;
   }
 
   // insure port is valid
