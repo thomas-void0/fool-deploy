@@ -1,3 +1,13 @@
+/**
+ * Function name: generateNginxContent
+ * Purpose: Generates the content for the nginx.conf file
+ *          and returns it as a string.
+ * Parameters: None
+ * Return: The content for the nginx.conf file as a string.
+ * Side Effects: None
+ * Special Notes: None
+ */
+
 function generateNginxContent() {
   return `
 server {

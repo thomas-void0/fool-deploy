@@ -2,9 +2,21 @@ import shell from 'shelljs';
 import config from '../config';
 import { Options } from '../typings';
 
-function shellExec(result: shell.ShellString, msg: string) {
-  const { code } = result;
+/**
+ * This function takes in a command and a message, runs the command, and exits the process if the command fails.
+ * @param cmd - the command to run
+ * @param msg - the message to display if the command fails
+ */
+function shellExec(cmd: string, msg: string) {
+  const result = shell.exec(cmd, { silent: true });
+  const { code, stderr } = result;
+
   if (code !== 0) {
+    shell.echo(`Error: ${msg}`);
+    shell.exit(1);
+  }
+
+  if (stderr) {
     shell.echo(`Error: ${msg}`);
     shell.exit(1);
   }

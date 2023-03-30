@@ -1,5 +1,10 @@
 import net from 'net';
-// probe whether is valid for port, Until a valid port number is assigned
+
+/**
+ * Probe whether is valid for port, Until a valid port number is assigned
+ * @param port
+ * @returns
+ */
 function getValidPort(port: number): Promise<number> {
   return new Promise(async (resolve) => {
     let _port = port;
@@ -16,11 +21,15 @@ function probePort(port: number) {
 
   return new Promise(function (resolve) {
     server.on('listening', function () {
-      server && server.close();
+      server.close();
       resolve(true);
     });
     server.on('error', function (err: any) {
-      resolve(err.code !== 'EADDRINUSE');
+      if (err.code === 'EADDRINUSE') {
+        resolve(false);
+      } else {
+        resolve(true);
+      }
     });
   });
 }

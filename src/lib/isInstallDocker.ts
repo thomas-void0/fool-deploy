@@ -1,8 +1,13 @@
 import shell from 'shelljs';
 
 // check docker install
-function isInstallDocker() {
-  return shell.exec('docker version').code === 0;
+export default function isInstallDocker() {
+  const result = shell.exec('docker version');
+  if (result.code === 0) {
+    return true;
+  }
+  if (result.code === 127) {
+    return false;
+  }
+  throw new Error(`Unable to check if Docker is installed: ${result.stderr}`);
 }
-
-export default isInstallDocker;
